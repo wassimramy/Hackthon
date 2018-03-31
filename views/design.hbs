@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    margin: 1px
+    height: 300px; /* Should be removed. Only for demonstration */
+ }
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+
+}
+
+
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
+.button-to-link{
+  border: 1px solid #4CAF50;
+  cursor:pointer;
+  outline:none;
+  background:none;
+  color:#0000F;
+  padding:0;
+  text-decoration:none;
+  /* font-family:inherit;
+  font-size:inherit; */
+}
+img {
+
+    max-height: 100px;
+    max-width: 100%;
+    /* width: auto\9; /* ie8 */ */
+}
+.text {
+    max-height: 100px;
+    max-width: 100%;
+    background-color: powderblue;
+}
+</style>
+</head>
+<body>
+
+{{> header}}
+
+<div class="row" align="center">
+  {{#each productitems}}
+  <div class="column">
+    <form action="/post-page" method="post">
+      <!-- The submit button is used to make the post as a link that can be submitted as a post so we can work on with node -->
+      <button type="submit" name="your_name" value="your_value" class="button-to-link"  >
+        <input type="hidden" value={{this._id}} id="postid" name="postid">
+        <img src={{this.ImageLink}} style="background-color:grey;align:center; "><br>
+        <div class="text"><lable><h5     text-align= "justify">{{this.ItemName}}</h5></lable></div>
+        <!-- <lable>{this.Descrip}}</lable><br> -->
+        <label >Price : ${{this.InitialBid}}</label><br>
+        <!-- <label>Posted on {this.OpenDate}}</label> -->
+        <!-- <p>CurrentBid : this.CurrentBid}}</p> -->
+        <!-- <div>Model : this.Model}}</div>
+        <div>ItemCode : this.ItemCode}}</div> -->
+        <!-- <div>CloseDate : this.CloseDate}}</div>
+        <div>ID : this._id}}</div> -->
+      </button>
+    </form>
+  </div>
+
+  {{/each}}
+</div>
+
+{{>footer}}
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<h1>Hi! {{userinfo.UserName}}</h1>
+<label> <h2>{{productitems.ItemName}}</h2></label><br>
+<img src={{productitems.ImageLink}} alt="Avatar" title="userpost" style="background-color:grey;width:50%;height:30%;">
+<br>Current bid:  {{productitems.CurrentBid}}<br>
+
+<form method="post" action="/bid-update">
+  <input type="hidden" value={{userinfo._id}} id="userid" name="userid">
+  <input type="hidden" value={{productitems._id}} id="productid" name="productid">
+  <input type="text" id="bid" name="bid">
+  <button type="submit" id="bidnow" name="bidnow" style="background-color:lightblue">Bid Now</button><lable style="color:red;"> {{error}}</label>
+</form>
+<p style="color:black;"> Minimum bid : {{productitems.MinimumBid}}
+<br> Description : {{productitems.Descrip}}
+<br> Model : {{productitems.Model}}
+<br> Item Code : {{productitems.ItemCode}}
+<br> Open Date : {{productitems.OpenDate}}
+<br>Close Date : {{productitems.CloseDate}}
+</p>

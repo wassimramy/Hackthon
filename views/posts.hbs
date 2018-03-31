@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>post</title>
+</head>
+<style>
+.button-to-link{
+  border: 1px solid #4CAF50;
+  cursor:pointer;
+  outline:none;
+  background:none;
+  color:#0000F;
+  padding:0;
+  text-decoration:none;
+  /* font-family:inherit;
+  font-size:inherit; */
+}
+</style>
+<body>
+      <h3>Welcome to our website</h3>
+        {{# each productitems }}
+        <div style="min-width:10%;max-width:20%; padding:3px; margin:0.3%; overflow:auto;">
+
+                <!-- <a href="/post-page" style="text-decoration: none; color:Black"> -->
+                <form action="/post-page" method="post">
+                  <!-- The submit button is used to make the post as a link that can be submitted as a post so we can work on with node -->
+                  <button type="submit" name="your_name" value="your_value" class="button-to-link" >
+                    <input type="hidden" value={{this._id}} id="postid" name="postid">
+                    <lable><h5>ItemName : {{this.ItemName}}</h5></lable>
+                    <img src={{this.ImageLink}} style="background-color:grey;min-width:70%;max-width:100%;">
+                    <label>{{this.Descrip}}</label><br>
+                    <label >Price : ${{this.InitialBid}}</label><br>
+                    <label>{{this.OpenDate}}</label>
+                    <!-- <p>CurrentBid : this.CurrentBid}}</p> -->
+                    <!-- <div>Model : this.Model}}</div>
+                    <div>ItemCode : this.ItemCode}}</div> -->
+                    <!-- <div>CloseDate : this.CloseDate}}</div>
+                    <div>ID : this._id}}</div> -->
+                  </button>
+                </form>
+              <!-- </a> -->
+            </div>
+
+        {{/each}}
+
+      </body>
+      </html>
